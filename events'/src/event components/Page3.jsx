@@ -6,21 +6,29 @@ const Page3 = () => {
   useEffect(() => {
     gsap.fromTo(
       "#colon1",
-      { scale: 1.5, x: "-400%", y: "-400%", opacity: 0.5 },
+      { scale: 1.2, x: "-400%", y: "-400%", opacity: 0 },
       { scale: 1, x: "-25%", y: "-25%", opacity: 1, duration: 1.5, ease: "power2.out" }
     );
 
     gsap.fromTo(
       "#colon2",
-      { scale: 1.5, x: "400%", y: "400%", opacity: 0.5 },
+      { scale: 1.2, x: "400%", y: "400%", opacity: 0 },
       { scale: 1, x: "25%", y: "25%", opacity: 1, duration: 1.5, ease: "power2.out" }
+    );
+
+    // Fade-in effect for the paragraph text
+    gsap.fromTo(
+      "p", 
+      { opacity: 0 }, 
+      { opacity: 1, duration: 3, ease: "power2.out" }
     );
   }, []);
 
   return (
     <div id="page3" data-scroll-section>
       <p data-scroll data-scroll-speed="2">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium commodi eum animi maxime fugiat dolorum ex aspernatur! Atque fugit culpa saepe unde et, obcaecati voluptatem?
+        Our aim may be as high as the endless sky, but we should have a resolve in our minds to walk
+        ahead, hand-in-hand, for victory will be ours.
       </p>
       <img
         id="colon1"

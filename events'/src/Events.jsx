@@ -11,6 +11,7 @@ import SmoothScroll from "./event components/SmoothScroll.jsx";
 import InteractiveBackground from "./event components/Ball.jsx";
 import Page3 from "./event components/Page3.jsx";
 import "./Events.css"
+// import Page4Cover from "./event components/Page4cover.jsx";
 
 const Events = () => {
   return (
@@ -20,9 +21,8 @@ const Events = () => {
         <InteractiveBackground>
           <Page3 />
         </InteractiveBackground>
-
-
         <Page4 />
+
         <Page5 />
       </SmoothScroll>
     </div>
