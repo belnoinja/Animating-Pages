@@ -48,7 +48,7 @@ html, body {
 #page3 {
   height: 100vh;
   width: 100%;
-  background-color: black;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,23 +159,9 @@ html, body {
   color: black;
   position: absolute;
   z-index: 10;
-  transition: all ease 0.5s;
+  transition: all ease-in-out 0.7s;
 }
-.elem p {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  font-weight: 800;
-  font-size: 10px;
-  color: white;
-  position: absolute;
-  z-index: 10;
-  transition: all ease 0.5s;
-  opacity: 0;
-}
+
 
 
 .elem img {
@@ -190,13 +176,9 @@ html, body {
   transform: scale(1); /* Reset scale on hover */
 }
 
-.elem:hover p{
-  opacity: 1;
-  transform: translateX(20px);
-}
 
 
-.elem:hover h2 {
-  opacity: 0; /* Fade out the text */
-  transform: translateY(-20px); /* Move the title upward slightly */
-}
+
+
+
+

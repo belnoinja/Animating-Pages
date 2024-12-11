@@ -1,0 +1,169 @@
+@font-face {
+    font-family: neu;
+    src: url(./assets/Fonts/NeueHaasDisplayMediu.ttf);
+  }
+  
+  @font-face {
+    font-family: neu;
+    font-weight: 100;
+    src: url(./assets/Fonts/NeueHaasDisplayLight.ttf);
+  }
+  
+  @font-face {
+    font-family: neu;
+    font-weight: 200;
+    src: url(./assets/Fonts/NeueHaasDisplayRoman.ttf);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: neu;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+  }
+  
+  #main {
+    position: relative;
+    z-index: 10;
+  }
+  
+  #part3 {
+    background-color: black;
+    width: 100%;
+    padding: 1vw 0;
+    min-height: 100vh;
+    
+  }
+  
+  .element-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .element {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    padding: 0 2vw;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    border-bottom: 1px solid #38383864;
+    cursor: pointer;
+    transition: height 0.5s ease;
+  }
+  
+  .element h2 {
+    position: relative;
+    z-index: 9;
+    font-size: 4rem;
+    color: transparent;
+    -webkit-text-stroke: 3px white;
+  }
+  
+  .element .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: -100%;
+    transition: all ease 0.25s;
+    background-color: greenyellow;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .element:hover .overlay {
+    top: 0;
+  }
+  
+  .overlay p {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 1rem;
+  }
+  
+  .overlay p span {
+    font-size: 1rem;
+    font-weight: 200;
+  }
+  
+  #fixed-image {
+    position: fixed;
+    width: 24vw;
+    height: 30vw;
+    top: 25%;
+    left: 50%;
+    z-index: 99;
+    display: none;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+  }
+  
+  .expanded {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    opacity: 1;
+    transition: opacity 0.5s ease, height 0.5s ease, padding 0.5s ease;
+  }
+  
+  .expanded .content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .expanded .text-section {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: white;
+  }
+  
+  .expanded .image-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+  }
+  
+  .expanded .image-section img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    padding: 0 20px;
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+  }
+  
+  .expanded .content {
+    max-height: 700px;  /* Allow it to expand smoothly */
+    opacity: 1;
+    padding: 20px; /* Adjust padding for the expanded state */
+  }
+  

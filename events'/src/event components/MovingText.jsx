@@ -10,27 +10,27 @@ const MovingText = () => {
   return (
     <div id="moving-text">
       <div className="con">
-        <h1>EVENTS</h1>
+        <h1>INITIATE</h1>
         <div className="gola"></div>
         <h1>SPORTS</h1>
         <div className="gola"></div>
-        <h1>TWARAN</h1>
+        <h1>INCULBATE</h1>
         <div className="gola"></div>
       </div>
       <div className="con">
-        <h1>EVENTS</h1>
+        <h1>INITIATE</h1>
         <div className="gola"></div>
         <h1>SPORTS</h1>
         <div className="gola"></div>
-        <h1>TWARAN</h1>
+        <h1>INCULBATE</h1>
         <div className="gola"></div>
       </div>
       <div className="con">
-        <h1>EVENTS</h1>
+        <h1>INITIATE</h1>
         <div className="gola"></div>
         <h1>SPORTS</h1>
         <div className="gola"></div>
-        <h1>TWARAN</h1>
+        <h1>INCULBATE</h1>
         <div className="gola"></div>
       </div>
       

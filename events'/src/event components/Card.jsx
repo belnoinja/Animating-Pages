@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "../Events.css";
 
-const Card = ({ title, imageUrl, color,text }) => {
+const Card = ({ title, imageUrl, color }) => {
   // State to track whether the card is being hovered
   const [isHovered, setIsHovered] = useState(false);
 
@@ -19,7 +19,6 @@ const Card = ({ title, imageUrl, color,text }) => {
       onMouseLeave={() => setIsHovered(false)} // Set hover state to false
     >
       <h2 style={titleStyle}>{title}</h2>
-      <p >{text}</p>
       <img src={imageUrl} alt={title} />
     </div>
   );

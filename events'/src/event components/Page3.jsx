@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import gsap from "gsap";
+import "../Events.css";
 
 const Page3 = () => {
   useEffect(() => {
