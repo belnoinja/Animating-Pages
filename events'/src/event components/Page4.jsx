@@ -2,14 +2,14 @@
 import Card from "./Card";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import MovingText from "./MovingText";
+// import MovingText from "./MovingText";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Page4 = () => {
   return (
     <div id="page4" data-scroll-section>
-      <MovingText/>
+      {/* <MovingText/> */}
       <div className="card-container">
         <Card
           title="Cricket"

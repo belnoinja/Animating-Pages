@@ -23,7 +23,7 @@ const SmoothScroll = ({ children }) => {
     <div
       data-scroll-container
       ref={scrollRef}
-      style={{ overflow: "hidden" }}
+      style={{ overflow: "hidden"}}
     >
       {children}
     </div>

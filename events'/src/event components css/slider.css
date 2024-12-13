@@ -1,0 +1,22 @@
+#page2 {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row; /* Layout content horizontally */
+  height: 50vh;
+  overflow-x:scroll; /* Allow horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping */
+  scroll-behavior: smooth;
+  /* overflow-y: hidden;  */
+}
+
+#page2::-webkit-scrollbar {
+  display: none;
+}
+
+#page2 h1 {
+  color: rgb(83, 191, 227);
+  font-size: 20vw;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block; /* Ensure proper alignment */
+}

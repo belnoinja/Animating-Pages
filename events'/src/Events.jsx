@@ -1,29 +1,27 @@
-/* eslint-disable no-unused-vars */
-
 // import Cursor from "./components/Cursor";
 // import BouncingFootball from "./components/BouncingFootball";
 
 // import { DragCards } from "./event components/DragCards";
-// import Page3 from "./event components/Page3.jsx";
+// import MovingText from "./event components/MovingText.jsx";
+// import "./Events.css"
+// import { _horizontal } from "gsap/Observer.js";
+import Page3 from "./event components/Page3.jsx";
 import Page4 from "./event components/Page4.jsx";
 import Page5 from "./event components/Page5.jsx";
 import SmoothScroll from "./event components/SmoothScroll.jsx";
 import InteractiveBackground from "./event components/Ball.jsx";
-import Page3 from "./event components/Page3.jsx";
-import "./Events.css"
-// import Page4Cover from "./event components/Page4cover.jsx";
+import Page2 from "./event components/slider.jsx";
 
 const Events = () => {
   return (
     <div>
-      {/* <DragCards/><Cursor /> */}
-      <SmoothScroll>
-        <InteractiveBackground>
+       <SmoothScroll>
+       <InteractiveBackground>
           <Page3 />
         </InteractiveBackground>
+        <Page2/>
         <Page4 />
-
-        <Page5 />
+        <Page5 /> 
       </SmoothScroll>
     </div>
   );

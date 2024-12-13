@@ -11,7 +11,7 @@
 html, body {
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 [data-scroll-container] {
@@ -61,6 +61,7 @@ html, body {
   width: 60%;
   line-height: 50px;
   text-align: center;
+  /* color: white; */
 }
 
 #page3 img {

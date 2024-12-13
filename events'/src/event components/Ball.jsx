@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useRef, useState } from 'react';
+import {  useEffect, useRef, useState } from 'react';
 // import Page3 from './Page3';
 
 const InteractiveBackground = ({ children }) => {
