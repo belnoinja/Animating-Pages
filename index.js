@@ -1,58 +1,62 @@
-
-const body = document.body;
-const boxRight = document.getElementById("box-right");
-const boxNew = document.getElementById("box-new");
-const nav = document.getElementById("nav");
-
-boxRight.addEventListener("click", () => {
-
-    gsap.to("#box1", { y: "-100%", opacity: 0, duration: 1 });
-    gsap.to("#box3", { x: "-100%", opacity: 0, duration: 1 });
-    gsap.to("#box4", { y: "-100%", opacity: 0, duration: 1 });
-    gsap.to("#box6", { x: "100%", opacity: 0, duration: 1 });
-
-    // gate opening
-    gsap.to("#section-1", { x: "-50%", duration: 1 });
-    gsap.to("#section-2", {
-        x: "50%",
-        duration: 1,
-    });
-
-    gsap.delayedCall(1.5, () => {
-        body.classList.add("open-gate");
-        gsap.set([boxNew, nav], { zIndex: 3 });
-        gsap.set([boxRight], { zIndex: 0 });
-        gsap.to("#section-1", { opacity: 0.95 });
-        gsap.to("#section-2", { opacity: 0.95 });
-    });
+const scroll = new LocomotiveScroll({
+    el: document.querySelector('#main'),
+    smooth: true
 });
 
-boxNew.addEventListener("click", () => {
 
-    gsap.set([boxNew, nav], { zIndex: 0 });
-    gsap.set([boxRight], { zIndex: 1 });
+function page4Animation() {
+    let elemC = document.querySelector("#elem-container")
+    let fixed = document.querySelector("#fixed-image")
+    elemC.addEventListener("mouseenter", function () {
+        fixed.style.display = "block"
+    })
+    elemC.addEventListener("mouseleave", function () {
+        fixed.style.display = "none"
+    })
 
-    // gate closing
-    gsap.to("#section-1", { x: "0%", duration: 0.5, opacity: 1 });
-    gsap.to("#section-2", {
-        x: "0%",
-        duration: 0.5,
-        opacity: 1,
-        onComplete: () => {
-            body.classList.remove("open-gate");
+    let elems = document.querySelectorAll(".elem")
+    elems.forEach(function (e) {
+        e.addEventListener("mouseenter", function () {
+            let image = e.getAttribute("data-image")
+            fixed.style.backgroundImage = `url(${image})`
+        })
+    })
+}
 
-            gsap.to("#box1", { y: "-100%", opacity: 1, duration: 0 });
-            gsap.to("#box1", { y: "0%", duration: 0.5 });
-
-            gsap.to("#box3", { x: "-100%", opacity: 1, duration: 0 });
-            gsap.to("#box3", { x: "0%", duration: 0.5 });
-
-            gsap.to("#box4", { y: "-100%", opacity: 1, duration: 0 });
-            gsap.to("#box4", { y: "0%", duration: 0.5 });
-
-            gsap.to("#box6", { x: "100%", opacity: 1, duration: 0 });
-            gsap.to("#box6", { x: "0%", duration: 0.5 });
-        },
+function swiperAnimation() {
+   let swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        centeredSlides: true,
+        spaceBetween: 100,
     });
-});
+}
+function menuAnimation() {
 
+    let menu = document.querySelector("nav h3")
+    let full = document.querySelector("#full-scr")
+    let navimg = document.querySelector("nav img")
+    let flag = 0
+    menu.addEventListener("click", function () {
+        if (flag == 0) {
+            full.style.top = 0
+            navimg.style.opacity = 0
+            flag = 1
+        } else {
+            full.style.top = "-100%"
+            navimg.style.opacity = 1
+            flag = 0
+        }
+    })
+}
+
+function loaderAnimation() {
+    let loader = document.querySelector("#loader")
+    setTimeout(()=> {
+        loader.style.top = "-100%"
+    }, 4200)
+}
+
+swiperAnimation()
+page4Animation()
+menuAnimation()
+loaderAnimation()
