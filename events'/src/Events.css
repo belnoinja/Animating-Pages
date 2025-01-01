@@ -53,30 +53,80 @@ html, body {
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 20px; /* Add padding for smaller screens */
 }
 
-#page3>p {
-  font-size: 35px;
+#page3 > p {
+  font-size: 2.5vw; /* Scale font size dynamically */
   font-weight: 700;
-  width: 60%;
-  line-height: 50px;
+  width: 80%; /* Adjust width for smaller screens */
+  line-height: 1.5em; /* Ensure consistent line spacing */
   text-align: center;
-  /* color: white; */
+  color: white; /* Replace with a color for better contrast on all screens */
 }
 
+/* Images within #page3 */
 #page3 img {
   position: absolute;
   height: 60px;
+  max-height: 10vw; /* Adjust size dynamically based on viewport width */
 }
 
+/* First colon position */
 #page3 #colon1 {
   top: 25%;
   left: 15%;
 }
 
+/* Second colon position */
 #page3 #colon2 {
   bottom: 30%;
   right: 15%;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  #page3 > p {
+    font-size: 5vw; /* Larger font size for better readability */
+    width: 90%; /* Adjust text width */
+  }
+
+  #page3 img {
+    height: 40px; /* Reduce image size */
+  }
+
+  #page3 #colon1 {
+    top: 20%; /* Adjust position for smaller screens */
+    left: 10%;
+  }
+
+  #page3 #colon2 {
+    bottom: 25%;
+    right: 10%;
+  }
+}
+
+/* Extra small screens (phones in portrait) */
+@media (max-width: 480px) {
+  #page3 > p {
+    font-size: 6vw;
+    width: 95%; /* Maximize text width for small screens */
+    line-height: 1.4em; /* Adjust spacing for small screens */
+  }
+
+  #page3 img {
+    height: 30px; /* Further reduce image size */
+  }
+
+  #page3 #colon1 {
+    top: 25%;
+    left: 8%;
+  }
+
+  #page3 #colon2 {
+    bottom: 28%;
+    right: 8%;
+  }
 }
 
 #page4 {
@@ -85,97 +135,176 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px 0;
+  padding: 30px 15px; /* Add horizontal padding for smaller screens */
 }
 
-#page4 h1 {
-  font-size: 100px;
-  font-weight: 900;
-  color: black;
-  -webkit-text-stroke: 2px white;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
+/* Responsive card container */
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;  /* Ensure cards are spaced evenly */
-  gap: 20px;  /* Space between rows and columns */
+  justify-content: center; /* Center cards on smaller screens */
+  gap: 20px; /* Space between cards */
   padding: 20px;
-  overflow-x: auto;  /* Enables horizontal scrolling */
+  overflow-x: auto; /* Enable horizontal scrolling on very small screens */
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  width: 100%;  /* Full width of the page */
+  width: 100%; /* Full container width */
 }
 
 .card-container::-webkit-scrollbar {
-  display: none; /* Hide scrollbar */
+  display: none; /* Hide scrollbar for a clean UI */
 }
 
+/* Card styling */
 .card-container .card {
-  width: calc(33.333% - 20px); /* Each card takes up 1/3 width minus the gap */
-  flex-shrink: 0;
+  width: calc(33.333% - 20px); /* 3 cards per row on larger screens */
+  flex-shrink: 0; /* Prevent cards from shrinking */
   scroll-snap-align: start;
   border-radius: 20px;
-  margin-bottom: 20px; /* Consistent vertical gap */
+  margin-bottom: 20px;
 }
 
+/* Ensure proper alignment for the first card */
 .card-container .card:first-child {
-  margin-left: 0;  /* No additional margin for the first card */
+  margin-left: 0;
 }
+
+/* Responsive adjustments */
+
+/* Tablets and medium screens */
+@media (max-width: 1024px) {
+  .card-container .card {
+    width: calc(50% - 20px); /* 2 cards per row */
+  }
+}
+
+/* Phones and smaller screens */
+@media (max-width: 768px) {
+  .card-container {
+    gap: 15px; /* Reduce gaps for smaller screens */
+  }
+  .card-container .card {
+    width: calc(100% - 30px); /* 1 card per row */
+  }
+}
+
+/* Extra small screens (e.g., phones in portrait mode) */
+@media (max-width: 480px) {
+  #page4 {
+    padding: 20px 10px; /* Reduce padding for small screens */
+  }
+  .card-container .card {
+    width: calc(100% - 20px); /* Full width minus small margin */
+  }
+}
+
 
 /* Card elements (elem) */
 .elem {
-  height: 80%;
-  width: 32%;
+  height: 80%; /* Maintain relative height */
+  width: 32%; /* Default to 3 cards per row */
   overflow: hidden;
   border-radius: 20px;
   position: relative;
+  flex-shrink: 0; /* Prevent shrinking when flex-wrapping */
+  margin-bottom: 20px; /* Consistent spacing */
+  transition: all ease 0.5s; /* Smooth transitions */
 }
 
+/* Text inside cards */
 .elem h2 {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: left;
+  justify-content: flex-start; /* Align text to the left */
   align-items: center;
   padding: 15px;
   font-weight: 800;
-  font-size: 40px;
+  font-size: 40px; /* Large text for headings */
   color: black;
   position: absolute;
   z-index: 10;
   transition: all ease 0.5s;
 }
+
 .elem h1 {
   height: 100%;
   width: 50%;
   display: flex;
-  justify-content: right;
+  justify-content: flex-end; /* Align text to the right */
   align-items: center;
   padding: 15px;
   font-weight: 800;
-  font-size: 10px;
+  font-size: 10px; /* Small secondary text */
   color: black;
   position: absolute;
   z-index: 10;
   transition: all ease-in-out 0.7s;
 }
 
-
-
+/* Card image */
 .elem img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Maintain aspect ratio */
   transition: all ease 0.5s;
-  transform: scale(1.1); /* Scale for initial hover effect */
+  transform: scale(1.1); /* Slight zoom-in by default */
 }
 
 .elem:hover img {
   transform: scale(1); /* Reset scale on hover */
 }
+
+/* Responsive adjustments */
+
+/* Tablets and medium screens */
+@media (max-width: 1024px) {
+  .elem {
+    width: 48%; /* Show 2 cards per row */
+  }
+
+  .elem h2 {
+    font-size: 30px; /* Adjust font size */
+  }
+
+  .elem h1 {
+    font-size: 8px; /* Adjust smaller text */
+  }
+}
+
+/* Phones and smaller screens */
+@media (max-width: 768px) {
+  .elem {
+    width: 100%; /* Full width for single-column layout */
+    height: auto; /* Adjust height for content */
+  }
+
+  .elem h2 {
+    font-size: 25px; /* Reduce heading size */
+  }
+
+  .elem h1 {
+    font-size: 7px; /* Smaller secondary text */
+  }
+}
+
+/* Extra small screens (e.g., portrait phones) */
+@media (max-width: 480px) {
+  .elem {
+    padding: 10px; /* Reduce padding for compact layout */
+  }
+
+  .elem h2 {
+    font-size: 20px; /* Further reduce heading size */
+    top: 0px;
+    left: 0px;
+  }
+
+  .elem h1 {
+    font-size: 6px; /* Keep secondary text readable */
+  }
+}
+
 
 
 

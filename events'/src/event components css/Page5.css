@@ -1,169 +1,277 @@
 @font-face {
-    font-family: neu;
-    src: url(./assets/Fonts/NeueHaasDisplayMediu.ttf);
-  }
-  
-  @font-face {
-    font-family: neu;
-    font-weight: 100;
-    src: url(./assets/Fonts/NeueHaasDisplayLight.ttf);
-  }
-  
-  @font-face {
-    font-family: neu;
-    font-weight: 200;
-    src: url(./assets/Fonts/NeueHaasDisplayRoman.ttf);
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: neu;
-  }
-  
-  html,
-  body {
-    height: 100%;
-    width: 100%;
-  }
-  
-  #main {
-    position: relative;
-    z-index: 10;
-  }
-  
-  #part3 {
-    background-color: black;
-    width: 100%;
-    padding: 1vw 0;
-    min-height: 100vh;
-    
-  }
-  
-  .element-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .element {
-    position: relative;
-    width: 100%;
-    height: 160px;
-    padding: 0 2vw;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    border-bottom: 1px solid #38383864;
-    cursor: pointer;
-    transition: height 0.5s ease;
-  }
-  
+  font-family: neu;
+  src: url(./assets/Fonts/NeueHaasDisplayMediu.ttf);
+}
+
+@font-face {
+  font-family: neu;
+  font-weight: 100;
+  src: url(./assets/Fonts/NeueHaasDisplayLight.ttf);
+}
+
+@font-face {
+  font-family: neu;
+  font-weight: 200;
+  src: url(./assets/Fonts/NeueHaasDisplayRoman.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: neu;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#main {
+  position: relative;
+  z-index: 10;
+}
+
+#part3 {
+  background-color: black;
+  width: 100%;
+  padding: 1vw 0;
+  min-height: 100vh;
+}
+
+.element-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.element {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  padding: 0 2vw;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  border-bottom: 1px solid #38383864;
+  cursor: pointer;
+  transition: height 0.5s ease;
+}
+
+.element h2 {
+  position: relative;
+  z-index: 9;
+  font-size: 4rem;
+  color: transparent;
+  -webkit-text-stroke: 3px white;
+}
+
+.element .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: -100%;
+  transition: all ease 0.25s;
+  background-color: greenyellow;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.element:hover .overlay {
+  top: 0;
+}
+
+.overlay p {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.overlay p span {
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+#fixed-image {
+  position: fixed;
+  width: 24vw;
+  height: 30vw;
+  top: 25%;
+  left: 50%;
+  z-index: 99;
+  display: none;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+}
+
+.expanded {
+  height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  opacity: 1;
+  transition: opacity 0.5s ease, height 0.5s ease, padding 0.5s ease;
+}
+
+.expanded .content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.expanded .text-section {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: white;
+}
+
+.expanded .image-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.expanded .image-section img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.content {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  padding: 0 20px;
+  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+}
+
+.expanded .content {
+  max-height: 700px; /* Allow it to expand smoothly */
+  opacity: 1;
+  padding: 20px; /* Adjust padding for the expanded state */
+}
+
+/* Responsive adjustments */
+
+/* Tablets and medium screens */
+@media (max-width: 1024px) {
   .element h2 {
-    position: relative;
-    z-index: 9;
-    font-size: 4rem;
-    color: transparent;
-    -webkit-text-stroke: 3px white;
+    font-size: 3rem; /* Adjust heading size */
+    -webkit-text-stroke: 2px white; /* Adjust stroke */
   }
-  
-  .element .overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: -100%;
-    transition: all ease 0.25s;
-    background-color: greenyellow;
-    display: flex;
-    justify-content: flex-end;
+
+  #fixed-image {
+    width: 30vw;
+    height: 35vw; /* Slightly smaller for tablets */
+  }
+
+  .expanded .text-section {
+    padding: 5px; /* Reduce padding */
+  }
+
+  .expanded .content {
+    gap: 15px; /* Smaller spacing between elements */
+  }
+}
+
+/* Phones and smaller screens */
+@media (max-width: 768px) {
+  .element {
+    height: 140px; /* Reduce element height */
+  }
+
+  .element h2 {
+    font-size: 2rem; /* Smaller heading size */
+  }
+
+  .overlay p span {
+    font-size: 0.9rem; /* Adjust overlay text size */
+  }
+
+  #fixed-image {
+    width: 40vw;
+    height: 50vw; /* Further reduce size for mobile */
+    top: 20%;
+    left: 50%;
+  }
+
+  .expanded .content {
+    flex-direction: column; /* Stack content vertically */
     align-items: center;
   }
-  
-  .element:hover .overlay {
-    top: 0;
+}
+
+/* Extra small screens (e.g., portrait phones) */
+/* Extra small screens (e.g., portrait phones) */
+@media (max-width: 480px) {
+  .element {
+    height: 120px; /* Compact height for small screens */
   }
-  
-  .overlay p {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    padding: 1rem;
+
+  .element h2 {
+    font-size: 1.5rem; /* Further reduce heading size */
+    -webkit-text-stroke: 1px white;
   }
-  
+
   .overlay p span {
-    font-size: 1rem;
-    font-weight: 200;
+    font-size: 0.8rem; /* Adjust for readability */
   }
-  
+
   #fixed-image {
-    position: fixed;
-    width: 24vw;
-    height: 30vw;
-    top: 25%;
-    left: 50%;
-    z-index: 99;
-    display: none;
-    border-radius: 15px;
-    background-size: cover;
-    background-position: center;
-    pointer-events: none;
+    width: 50vw;
+    height: 60vw;
+    top: 15%;
   }
-  
+
+  /* Ensure expanded content stacks vertically */
   .expanded {
-    height: auto;
-    flex-direction: column;
+    flex-direction: column; /* Stack content vertically */
     align-items: flex-start;
     justify-content: flex-start;
-    opacity: 1;
-    transition: opacity 0.5s ease, height 0.5s ease, padding 0.5s ease;
+    height: auto;
+    padding: 10px;
   }
-  
+
   .expanded .content {
+    flex-direction: column; /* Stack content items */
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .expanded .text-section {
+    width: 100%;
+    text-align: center; /* Center align text for mobile */
+    padding: 10px 0;
+  }
+
+  .expanded .image-section {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
+    justify-content: center; /* Center image on mobile */
     align-items: center;
-    justify-content: space-between;
+    padding: 10px 0;
   }
-  
-  .expanded .text-section {
-    flex: 1;
-    padding: 10px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    color: white;
-  }
-  
-  .expanded .image-section {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-  }
-  
+
   .expanded .image-section img {
-    max-width: 100%;
+    width: 80%; /* Scale down the image for mobile */
     height: auto;
-    border: 1px solid #ccc;
     border-radius: 8px;
   }
-  
-  .content {
-    overflow: hidden;
-    max-height: 0;
-    opacity: 0;
-    padding: 0 20px;
-    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
-  }
-  
-  .expanded .content {
-    max-height: 700px;  /* Allow it to expand smoothly */
-    opacity: 1;
-    padding: 20px; /* Adjust padding for the expanded state */
-  }
-  
+}
+

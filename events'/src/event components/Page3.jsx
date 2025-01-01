@@ -7,13 +7,13 @@ const Page3 = () => {
     gsap.fromTo(
       "#colon1",
       { scale: 1.2, x: "-400%", y: "-400%", opacity: 0 },
-      { scale: 1, x: "-25%", y: "-25%", opacity: 1, duration: 1.5, ease: "power2.out" }
+      { scale: 1, x: "-75%", y: "-25%", opacity: 1, duration: 1.5, ease: "power2.out" }
     );
 
     gsap.fromTo(
       "#colon2",
       { scale: 1.2, x: "400%", y: "400%", opacity: 0 },
-      { scale: 1, x: "25%", y: "25%", opacity: 1, duration: 1.5, ease: "power2.out" }
+      { scale: 1, x: "75%", y: "25%", opacity: 1, duration: 1.5, ease: "power2.out" }
     );
 
     // Fade-in effect for the paragraph text

@@ -6,7 +6,7 @@
 // import "./Events.css"
 // import { _horizontal } from "gsap/Observer.js";
 import Footer from "./Footer.jsx"
-import Navbar from "./Navbar.jsx"
+import Navbar from "./event components/Navbar.jsx"
 import Page3 from "./event components/Page3.jsx";
 import Page4 from "./event components/Page4.jsx";
 import Page5 from "./event components/Page5.jsx";

@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import {  useEffect, useRef, useState } from 'react';
-// import Page3 from './Page3';
+import { useEffect, useRef, useState } from 'react';
 
 const InteractiveBackground = ({ children }) => {
   const canvasRef = useRef(null);
@@ -12,12 +11,20 @@ const InteractiveBackground = ({ children }) => {
     height: window.innerHeight,
   });
 
-  const NUM_PARTICLES = 100;
-  const PARTICLE_SIZE = 5;
-  const MOUSE_ATTRACTION_STRENGTH = 0.05; // How strongly particles are attracted to the mouse
-  const MOUSE_RADIUS = 150; // Distance within which particles are affected by mouse
+  const getResponsiveConfig = () => {
+    const { width } = canvasSize;
+    if (width < 768) {
+      return { NUM_PARTICLES: 50, PARTICLE_SIZE: 3, MOUSE_RADIUS: 100 };
+    } else if (width < 1200) {
+      return { NUM_PARTICLES: 75, PARTICLE_SIZE: 4, MOUSE_RADIUS: 125 };
+    } else {
+      return { NUM_PARTICLES: 100, PARTICLE_SIZE: 5, MOUSE_RADIUS: 150 };
+    }
+  };
 
-  // Particle class to handle individual particle behavior
+  const { NUM_PARTICLES, PARTICLE_SIZE, MOUSE_RADIUS } = getResponsiveConfig();
+  const MOUSE_ATTRACTION_STRENGTH = 0.05;
+
   class Particle {
     constructor(x, y) {
       this.x = x;
@@ -35,7 +42,6 @@ const InteractiveBackground = ({ children }) => {
       this.x += this.velocity.x;
       this.y += this.velocity.y;
 
-      // Bounce off the canvas edges
       if (this.x <= 0 || this.x >= canvasSize.width) this.velocity.x = -this.velocity.x;
       if (this.y <= 0 || this.y >= canvasSize.height) this.velocity.y = -this.velocity.y;
     }
@@ -47,7 +53,6 @@ const InteractiveBackground = ({ children }) => {
       ctx.fill();
     }
 
-    // Attract the particle towards the mouse position
     attractToMouse() {
       const dx = mousePosition.current.x - this.x;
       const dy = mousePosition.current.y - this.y;
@@ -63,16 +68,13 @@ const InteractiveBackground = ({ children }) => {
     }
   }
 
-  // Handle mouse movement
   const handleMouseMove = (event) => {
     mousePosition.current = { x: event.clientX, y: event.clientY };
   };
 
-  // Handle mouse hover state
   const handleMouseOver = () => setIsMouseOver(true);
   const handleMouseOut = () => setIsMouseOver(false);
 
-  // Handle window resizing
   const handleResize = () => {
     setCanvasSize({
       width: window.innerWidth,
@@ -80,27 +82,22 @@ const InteractiveBackground = ({ children }) => {
     });
   };
 
-  // Drawing and animating particles
   const drawParticles = (ctx) => {
-    ctx.clearRect(0, 0, canvasSize.width, canvasSize.height); // Clear canvas
+    ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
 
     particles.current.forEach((particle) => {
       particle.move();
-
-      // If mouse is hovering, attract particles towards the mouse
       if (isMouseOver) {
         particle.attractToMouse();
       }
-
       particle.draw(ctx);
 
-      // Draw lines to nearby particles (optional)
       particles.current.forEach((otherParticle) => {
         if (otherParticle !== particle) {
           const distance = Math.sqrt(
             (particle.x - otherParticle.x) ** 2 + (particle.y - otherParticle.y) ** 2
           );
-          if (distance < 100) { // If the distance between two particles is small enough
+          if (distance < 100) {
             ctx.strokeStyle = 'rgba(0, 255, 0, 0.2)';
             ctx.lineWidth = 0.5;
             ctx.beginPath();
@@ -113,12 +110,11 @@ const InteractiveBackground = ({ children }) => {
     });
   };
 
-  // Animation loop
   const animate = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     drawParticles(ctx);
-    requestAnimationFrame(animate); // Keep animating
+    requestAnimationFrame(animate);
   };
 
   useEffect(() => {
@@ -126,7 +122,6 @@ const InteractiveBackground = ({ children }) => {
     canvas.width = canvasSize.width;
     canvas.height = canvasSize.height;
 
-    // Initialize particles
     particles.current = [];
     for (let i = 0; i < NUM_PARTICLES; i++) {
       const x = Math.random() * canvasSize.width;
@@ -134,28 +129,23 @@ const InteractiveBackground = ({ children }) => {
       particles.current.push(new Particle(x, y));
     }
 
-    // Start animation loop
     animate();
 
-    // Listen to mouse events
     window.addEventListener('mousemove', handleMouseMove);
     canvas.addEventListener('mouseenter', handleMouseOver);
     canvas.addEventListener('mouseleave', handleMouseOut);
-
-    // Listen to window resize events
     window.addEventListener('resize', handleResize);
 
-    // Cleanup
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseenter', handleMouseOver);
       canvas.removeEventListener('mouseleave', handleMouseOut);
       window.removeEventListener('resize', handleResize);
     };
-  }, [canvasSize]); // Re-run effect when canvasSize changes
+  }, [canvasSize]);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh' ,backgroundColor:"black" }}>
+    <div style={{ position: 'relative', width: '100%', height: '100vh', backgroundColor: 'black' }}>
       <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0 }} />
       <div
         style={{
@@ -166,9 +156,10 @@ const InteractiveBackground = ({ children }) => {
           color: 'white',
           fontSize: '24px',
           fontFamily: 'Arial, sans-serif',
+          textAlign: 'center',
         }}
       >
-       { children }
+        {children}
       </div>
     </div>
   );
